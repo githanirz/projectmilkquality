@@ -25,10 +25,10 @@ def do_prediksi():
         }])
     except KeyError as e:
         return jsonify({"error": f"Field {str(e)} is missing"}), 400
-    
+
     prediksi = int(model.predict(input_data)[0])
     hasil_prediksi = "Bagus" if prediksi == 1 else "Tidak Bagus"
-    
+
     conn = get_connection()
     cur = conn.cursor()
     cur.execute("""
@@ -67,11 +67,11 @@ def prediksi_excel():
             'AddedWater': 0,
             'Protein': 0
         }, inplace=True)
-        
+
         result = []
         conn = get_connection()
         cur = conn.cursor()
-        
+
         for _, row in df.iterrows():
             try:
                 nama_mitra = str(row['nama']) if pd.notna(row['nama']) else None
