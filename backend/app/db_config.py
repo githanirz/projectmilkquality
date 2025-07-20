@@ -9,5 +9,5 @@ def get_connection():
         password=os.environ["DB_PASSWORD"],
         db=os.environ["DB_NAME"],
         charset="utf8mb4",
-        cursorclass=pymysql.cursors.DictCursor
+        # cursorclass=pymysql.cursors.DictCursor
     )
