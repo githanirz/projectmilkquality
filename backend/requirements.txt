@@ -3,12 +3,11 @@ click==8.1.8
 colorama==0.4.6
 Flask==3.1.0
 flask-cors==5.0.1
-Flask-MySQLdb==2.0.0
+PyMySQL==1.1.0
 itsdangerous==2.2.0
 Jinja2==3.1.5
 joblib==1.5.0
 MarkupSafe==3.0.2
-mysqlclient==2.2.7
 numpy==2.2.6
 pandas==2.2.3
 python-dateutil==2.9.0.post0
