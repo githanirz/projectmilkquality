@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.extensions import mysql 
+from app.db_config import get_connection
 from werkzeug.security import check_password_hash
 import os
 from flask import make_response
@@ -15,7 +15,8 @@ def manual_login():
     email = data.get("email")
     password = data.get("password")
 
-    cur = mysql.connection.cursor()
+    conn = get_connection()
+    cur = conn.cursor()
     cur.execute("SELECT id, password FROM admin WHERE email = %s", (email,))
     user = cur.fetchone()
     cur.close()

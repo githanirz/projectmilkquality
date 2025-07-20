@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.extensions import mysql
+from app.db_config import get_connection
 
 
 mitra_bp = Blueprint("mitra", __name__)
@@ -11,17 +11,20 @@ def add_mitra():
     alamat = data.get("alamat")
     tanggal_gabung = data.get("tanggal_gabung")
 
-    cur = mysql.connection.cursor()
+    conn = get_connection()
+    cur = conn.cursor()
     cur.execute("INSERT INTO mitra (nama, alamat, tanggal_gabung) VALUES (%s, %s, %s)", 
-                (nama, alamat, tanggal_gabung))
-    mysql.connection.commit()
+            (nama, alamat, tanggal_gabung))
+    conn.commit()
     cur.close()
+    conn.close()
     return jsonify({"message": "Mitra berhasil ditambahkan"}), 201
 
 # List Mitra
 @mitra_bp.route("/mitra", methods=["GET"])
 def get_all_mitra():
-    cur = mysql.connection.cursor()
+    conn = get_connection()
+    cur = conn.cursor()
     cur.execute("SELECT * FROM mitra")
     mitras = cur.fetchall()
     cur.close()
@@ -45,11 +48,12 @@ def update_mitra(id):
     alamat = data.get("alamat")
     tanggal_gabung = data.get("tanggal_gabung")
 
-    cur = mysql.connection.cursor()
+    conn = get_connection()
+    cur = conn.cursor()
     cur.execute("""
         UPDATE mitra SET nama=%s, alamat=%s, tanggal_gabung=%s WHERE id=%s
     """, (nama, alamat, tanggal_gabung, id))
-    mysql.connection.commit()
+    conn.commit()
     cur.close()
 
     return jsonify({"message": "Mitra berhasil diupdate"})
@@ -58,9 +62,10 @@ def update_mitra(id):
 @mitra_bp.route("/mitra/<int:id>", methods=["DELETE"])
 def delete_mitra(id):
     try:
-        cur = mysql.connection.cursor()
+        conn = get_connection()
+        cur = conn.cursor()
         cur.execute("DELETE FROM mitra WHERE id = %s", (id,))
-        mysql.connection.commit()
+        conn.commit()
         cur.close()
         return jsonify({"message": "Mitra berhasil dihapus."}), 200
     except Exception as e:
@@ -69,7 +74,8 @@ def delete_mitra(id):
 
 @mitra_bp.route("/mitra/<int:id>", methods=["GET"])
 def get_mitra_by_id(id):
-    cur = mysql.connection.cursor()
+    conn = get_connection()
+    cur = conn.cursor()
     cur.execute("SELECT * FROM mitra WHERE id = %s", (id,))
     mitra = cur.fetchone()
     cur.close()

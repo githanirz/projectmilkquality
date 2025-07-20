@@ -1,12 +1,14 @@
 from flask import Blueprint, request, jsonify
-from app.extensions import mysql
+from app.db_config import get_connection
+
 
 riwayat_bp = Blueprint("riwayat", __name__)
 
 #get riwayat
 @riwayat_bp.route("/riwayat", methods=["GET"])
 def get_all_riwayat():
-    cur = mysql.connection.cursor()
+    conn = get_connection()
+    cur = conn.cursor()
     cur.execute("""
        SELECT p.id, p.admin_id, p.mitra_id, m.nama, p.tanggal_prediksi,
                p.added_water, p.protein, p.fat, p.hasil, p.created_at

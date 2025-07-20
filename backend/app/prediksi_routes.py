@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.extensions import mysql
+from app.db_config import get_connection
 import pandas as pd
 import joblib
 import os
@@ -29,7 +29,8 @@ def do_prediksi():
     prediksi = int(model.predict(input_data)[0])
     hasil_prediksi = "Bagus" if prediksi == 1 else "Tidak Bagus"
     
-    cur = mysql.connection.cursor()
+    conn = get_connection()
+    cur = conn.cursor()
     cur.execute("""
         INSERT INTO prediksi (admin_id, mitra_id, tanggal_prediksi, added_water, protein, fat, hasil, created_at)
         VALUES (%s, %s, CURDATE(), %s, %s, %s, %s, NOW())
@@ -41,7 +42,7 @@ def do_prediksi():
         data.get("Fat"),
         hasil_prediksi
     ))
-    mysql.connection.commit()
+    conn.commit()
     cur.close()
 
     return jsonify({"hasil_prediksi": hasil_prediksi}), 200
@@ -68,7 +69,8 @@ def prediksi_excel():
         }, inplace=True)
         
         result = []
-        cur = mysql.connection.cursor()
+        conn = get_connection()
+        cur = conn.cursor()
         
         for _, row in df.iterrows():
             try:
@@ -116,7 +118,7 @@ def prediksi_excel():
                 })
                 continue
 
-        mysql.connection.commit()
+        conn.commit()
         return jsonify({"data": result}), 200
 
     except Exception as e:
