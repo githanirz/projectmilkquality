@@ -16,7 +16,11 @@ const MitraPage = () => {
   );
 
   const formatdate = (tanggal) => {
+    if (!tanggal) return "-";
+
     const date = new Date(tanggal);
+    if (isNaN(date)) return "-";
+
     return new Intl.DateTimeFormat("id-ID", {
       dateStyle: "long",
     }).format(date);

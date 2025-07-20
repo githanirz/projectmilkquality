@@ -18,8 +18,8 @@ const EditMitra = () => {
   useEffect(() => {
     const fetchMitra = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/mitra`);
-        const mitra = res.data.find((m) => m.id === parseInt(id));
+        const res = await axios.get(`http://localhost:5000/mitra/${id}`);
+        const mitra = res.data;
         if (mitra) {
           setForm({
             nama: mitra.nama,
