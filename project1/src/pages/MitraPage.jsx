@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/navbar";
+import Header from "../components/Navbar";
 import Modal from "../components/Modal";
 
 const MitraPage = () => {
@@ -113,13 +113,13 @@ const MitraPage = () => {
                   <td>
                     <button
                       onClick={() => navigate(`/editmitra/${m.id}`)}
-                      className="btn btn-warning btn-sm text-white mr-2"
+                      className="btn btn-warning btn-sm text-white mr-4 mb-2"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => openDeleteModal(m.id)}
-                      className="btn btn-error btn-sm text-white"
+                      className="btn btn-error btn-sm text-white mb-2"
                     >
                       Hapus
                     </button>
