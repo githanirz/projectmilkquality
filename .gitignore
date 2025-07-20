@@ -1,0 +1,36 @@
+# Python / Flask
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.db
+instance/
+*.sqlite3
+*.egg-info/
+.pytest_cache/
+.coverage
+
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Environment files
+.env
+*.env
+
+# Node/React (jika ada)
+node_modules/
+build/
+dist/
+
+# VSCode / Editor config
+.vscode/
+.idea/
+*.swp
+
+# System files
+.DS_Store
+Thumbs.db
