@@ -32,7 +32,7 @@ def get_all_mitra():
             "id": m[0],
             "nama": m[1],
             "alamat": m[2],
-            "tanggal_gabung": m[3]
+            "tanggal_gabung": str(m[3]) if m[3] else None
         })
 
     return jsonify(mitra_list)
@@ -80,5 +80,5 @@ def get_mitra_by_id(id):
         "id": mitra[0],
         "nama": mitra[1],
         "alamat": mitra[2],
-        "tanggal_gabung": str(mitra[3])
+          "tanggal_gabung": mitra[3].strftime("%Y-%m-%d") if mitra[3] else None
     })
