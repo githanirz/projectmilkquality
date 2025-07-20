@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Header from "../components/navbar";
+import Header from "../components/Navbar";
 
 const RiwayatPage = () => {
   const [riwayats, setRiwayats] = useState([]);

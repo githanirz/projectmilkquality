@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/navbar";
+import Header from "../components/Navbar";
 import prediksi from "../assets/images/prediksi.svg";
 import { useRef } from "react";
 
@@ -152,9 +152,13 @@ const AddPrediksi = () => {
         <div className=" flex flex-col lg:flex-row gap-8">
           <div className="card bg-base-100 w-full shadow-2xl p-4">
             <div className="card-body">
-              <h2 className="text-xl font-bold text-green-900 mb-4">
+              <h2 className="text-xl font-bold text-green-900 ">
                 Masukkan Parameter
               </h2>
+              <p className="text-sm mt-2 text-gray-500 mb-4">
+                Format: Fat = 03.00 lebih, AddedWater = 00.00 , Protein = 03.00
+                lebih
+              </p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <fieldset>
                   <legend className="font-semibold">Pilih Mitra</legend>

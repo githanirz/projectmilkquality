@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import date from "../assets/images/date_icon.png";
 import mitraicon from "../assets/images/mitra_icon.png";
-import Header from "../components/navbar";
+import Header from "../components/Navbar";
 
 const PrediksiPage = () => {
   const location = useLocation();

@@ -1,7 +1,7 @@
 import Features from "../components/Features";
 import HeroSection from "../components/HeroSection";
 import About from "../components/About";
-import Header from "../components/navbar";
+import Header from "../components/Navbar";
 import Footers from "../components/Footers";
 
 const HomePage = () => {
