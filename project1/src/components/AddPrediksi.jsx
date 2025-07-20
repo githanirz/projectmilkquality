@@ -119,7 +119,12 @@ const AddPrediksi = () => {
     try {
       const res = await axios.post(
         "https://projectmilkquality-production.up.railway.app/upload-excel",
-        formData
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
       const results = res.data.data;
 
