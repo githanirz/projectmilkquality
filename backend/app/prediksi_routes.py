@@ -124,4 +124,5 @@ def prediksi_excel():
     except Exception as e:
         return jsonify({"error": f"Error processing file: {str(e)}"}), 500
     finally:
-        cur.close()
+        if 'cur' in locals():
+            cur.close()
