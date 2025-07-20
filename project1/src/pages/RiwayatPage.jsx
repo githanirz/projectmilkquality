@@ -18,7 +18,9 @@ const RiwayatPage = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/riwayat");
+      const res = await axios.get(
+        "https://projectmilkquality-production.up.railway.app/riwayat"
+      );
       setRiwayats(res.data);
     } catch (error) {
       console.error("Gagal mengambil data riwayat:", error);

@@ -10,14 +10,14 @@ const Features = () => {
   const [totalTidakBagus, setTotalTidakBagus] = useState(0);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/mitra")
+      .get("https://projectmilkquality-production.up.railway.app/mitra")
       .then((res) => {
         setTotalMitra(res.data.length);
       })
       .catch((err) => console.error("Gagal ambil data mitra:", err));
 
     axios
-      .get("http://localhost:5000/riwayat")
+      .get("https://projectmilkquality-production.up.railway.app/riwayat")
       .then((res) => {
         const data = res.data;
         const bagus = data.filter((d) => d.hasil === "Bagus").length;

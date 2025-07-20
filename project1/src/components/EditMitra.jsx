@@ -18,7 +18,9 @@ const EditMitra = () => {
   useEffect(() => {
     const fetchMitra = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/mitra/${id}`);
+        const res = await axios.get(
+          `https://projectmilkquality-production.up.railway.app/mitra/${id}`
+        );
         const mitra = res.data;
         if (mitra) {
           setForm({
@@ -54,7 +56,10 @@ const EditMitra = () => {
 
     setLoading(true);
     try {
-      await axios.put(`http://localhost:5000/mitra/${id}`, form);
+      await axios.put(
+        `https://projectmilkquality-production.up.railway.app/mitra/${id}`,
+        form
+      );
       setIsSuccessModalOpen(true);
     } catch (error) {
       console.error("Gagal update mitra:", error);

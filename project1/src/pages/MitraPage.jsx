@@ -28,7 +28,10 @@ const MitraPage = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/mitra");
+      const res = await axios.get(
+        "https://projectmilkquality-production.up.railway.app/mitra"
+      );
+
       setMitras(res.data);
     } catch (error) {
       console.error("Gagal mengambil data mitra:", error);
@@ -37,7 +40,9 @@ const MitraPage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/mitra/${id}`);
+      await axios.delete(
+        `https://projectmilkquality-production.up.railway.app/mitra/${id}`
+      );
       fetchData();
     } catch (error) {
       console.error("Gagal menghapus mitra:", error);

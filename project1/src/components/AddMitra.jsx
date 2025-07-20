@@ -31,7 +31,10 @@ const AddMitra = () => {
     if (!validate()) return;
 
     try {
-      await axios.post("http://localhost:5000/mitra", add);
+      await axios.post(
+        "https://projectmilkquality-production.up.railway.app/mitra",
+        add
+      );
       setIsSuccessModalOpen(true);
     } catch (error) {
       console.error("Gagal menambahkan mitra:", error);

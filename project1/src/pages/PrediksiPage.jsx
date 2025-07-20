@@ -22,7 +22,9 @@ const PrediksiPage = () => {
     // Jika input manual dan ada mitra_id, ambil nama mitranya
     if (input?.mitra_id) {
       axios
-        .get(`http://localhost:5000/mitra/${input.mitra_id}`)
+        .get(
+          `https://projectmilkquality-production.up.railway.app/mitra/${input.mitra_id}`
+        )
         .then((res) => setMitra(res.data))
         .catch((err) => console.error("Gagal ambil data mitra:", err));
     }

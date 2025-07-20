@@ -30,10 +30,13 @@ const LoginPage = () => {
     e.preventDefault();
     if (!validate()) return;
     try {
-      const res = await axios.post("http://localhost:5000/manual-login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://projectmilkquality-production.up.railway.app/manual-login",
+        {
+          email,
+          password,
+        }
+      );
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("admin_id", res.data.admin_id);
       navigate("/");
@@ -46,9 +49,12 @@ const LoginPage = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const googleEmail = result.user.email;
-      const res = await axios.post("http://localhost:5000/google-login", {
-        email: googleEmail,
-      });
+      const res = await axios.post(
+        "https://projectmilkquality-production.up.railway.app/google-login",
+        {
+          email: googleEmail,
+        }
+      );
       localStorage.setItem("token", res.data.token);
       navigate("/");
     } catch {

@@ -20,7 +20,7 @@ const AddPrediksi = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/mitra")
+      .get("https://projectmilkquality-production.up.railway.app/mitra")
       .then((res) => setMitraList(res.data))
       .catch((err) => console.error("Gagal mengambil data mitra:", err));
   }, []);
@@ -63,13 +63,16 @@ const AddPrediksi = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/prediksi", {
-        admin_id: parseInt(admin_id),
-        mitra_id: parseInt(formData.mitra_id),
-        Fat: parseFloat(formData.Fat),
-        AddedWater: parseFloat(formData.AddedWater),
-        Protein: parseFloat(formData.Protein),
-      });
+      const res = await axios.post(
+        "https://projectmilkquality-production.up.railway.app/prediksi",
+        {
+          admin_id: parseInt(admin_id),
+          mitra_id: parseInt(formData.mitra_id),
+          Fat: parseFloat(formData.Fat),
+          AddedWater: parseFloat(formData.AddedWater),
+          Protein: parseFloat(formData.Protein),
+        }
+      );
       const hasil_prediksi = res.data.hasil_prediksi;
 
       navigate("/prediksi-hasil", {
@@ -115,7 +118,7 @@ const AddPrediksi = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/upload-excel",
+        "https://projectmilkquality-production.up.railway.app/upload-excel",
         formData
       );
       const results = res.data.data;
