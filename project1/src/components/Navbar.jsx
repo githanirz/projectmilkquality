@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
-        <img src={logo} className="h-12 w-60 mr-16" alt="logo" />
+        <img src={logo} className="h-12 w-60 mr-4" alt="logo" />
         {isLoggedIn && (
           <div className="dropdown lg:hidden">
             <div tabIndex={0} role="button" className="btn btn-ghost">
