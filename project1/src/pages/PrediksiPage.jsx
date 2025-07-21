@@ -42,97 +42,101 @@ const PrediksiPage = () => {
         </h4>
       </div>
       {batch_results && batch_results.length > 0 ? (
-        <div className="grid md:grid-cols-2 gap-6">
-          {batch_results.map((res, i) => (
-            <div key={i} className="card bg-white shadow-md p-6">
-              <p className="flex gap-2">
-                <img src={date} className="w-10 h-10" />
-                <span>
-                  {new Date(res.tanggal_prediksi).toLocaleDateString("id-ID")}
-                </span>
-              </p>
-              <p className="flex gap-2 items-center mb-4">
-                <img src={mitraicon} className="w-10 h-10" />
-                <span className="font-medium">{res.nama}</span>
-              </p>
-              <div className="flex gap-6">
-                <div
-                  className={`stats shadow ${
-                    parseFloat(res.Fat) >= 3
-                      ? "bg-lime-200 text-black"
-                      : "bg-red-600 text-white"
-                  } `}
-                >
-                  <div className="stat  p-10">
-                    <div className="stat-title text-lg font-semibold text-black">
-                      Fat%
+        <div className="flex justify-center items-center p-8">
+          <div className="grid md:grid-cols-2 gap-6">
+            {batch_results.map((res, i) => (
+              <div key={i} className="card bg-white shadow-md p-6">
+                <p className="flex gap-2">
+                  <img src={date} className="w-10 h-10" />
+                  <span>
+                    {new Date(res.tanggal_prediksi).toLocaleDateString("id-ID")}
+                  </span>
+                </p>
+                <p className="flex gap-2 items-center mb-4">
+                  <img src={mitraicon} className="w-10 h-10" />
+                  <span className="font-medium">{res.nama}</span>
+                </p>
+                <div className="flex gap-6">
+                  <div
+                    className={`stats shadow ${
+                      parseFloat(res.Fat) >= 3
+                        ? "bg-lime-200 text-black"
+                        : "bg-red-600 text-white"
+                    } `}
+                  >
+                    <div className="stat  p-10">
+                      <div className="stat-title text-lg font-semibold text-black">
+                        Fat%
+                      </div>
+                      <div className=" text-5xl font-bold mx-">{res.Fat}</div>
+                      <div className="stat-desc text-base font-medium text-right pt-4 ml-8 text-black">
+                        {parseFloat(res.Fat) >= 3
+                          ? "Terpenuhi"
+                          : "Tidak Terpenuhi"}
+                      </div>
                     </div>
-                    <div className=" text-5xl font-bold mx-">{res.Fat}</div>
-                    <div className="stat-desc text-base font-medium text-right pt-4 ml-8 text-black">
-                      {parseFloat(res.Fat) >= 3
-                        ? "Terpenuhi"
-                        : "Tidak Terpenuhi"}
+                  </div>
+                  <div
+                    className={`stats shadow ${
+                      parseFloat(res.AddedWater) == 0
+                        ? "bg-lime-200 text-black"
+                        : "bg-red-600 text-white"
+                    } `}
+                  >
+                    <div className="stat  p-10">
+                      <div className="stat-title text-lg font-semibold text-black">
+                        AddedWater%
+                      </div>
+                      <div className=" text-5xl font-bold mx-">
+                        {res.AddedWater}
+                      </div>
+                      <div className="stat-desc text-base font-medium text-right pt-4 ml-8 text-black">
+                        {parseFloat(res.AddedWater) == 0
+                          ? "Terpenuhi"
+                          : "Tidak Terpenuhi"}
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={`stats shadow ${
+                      parseFloat(res.Protein) >= 3
+                        ? "bg-lime-200 text-black"
+                        : "bg-red-600 text-white"
+                    } `}
+                  >
+                    <div className="stat  p-10">
+                      <div className="stat-title text-lg font-semibold text-black">
+                        Protein%
+                      </div>
+                      <div className=" text-5xl font-bold mx-">
+                        {res.Protein}
+                      </div>
+                      <div className="stat-desc text-base font-medium text-right pt-4 ml-8 text-black">
+                        {parseFloat(res.Protein) >= 3
+                          ? "Terpenuhi"
+                          : "Tidak Terpenuhi"}
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div
-                  className={`stats shadow ${
-                    parseFloat(res.AddedWater) == 0
-                      ? "bg-lime-200 text-black"
-                      : "bg-red-600 text-white"
-                  } `}
-                >
-                  <div className="stat  p-10">
-                    <div className="stat-title text-lg font-semibold text-black">
-                      AddedWater%
-                    </div>
-                    <div className=" text-5xl font-bold mx-">
-                      {res.AddedWater}
-                    </div>
-                    <div className="stat-desc text-base font-medium text-right pt-4 ml-8 text-black">
-                      {parseFloat(res.AddedWater) == 0
-                        ? "Terpenuhi"
-                        : "Tidak Terpenuhi"}
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className={`stats shadow ${
-                    parseFloat(res.Protein) >= 3
-                      ? "bg-lime-200 text-black"
-                      : "bg-red-600 text-white"
-                  } `}
-                >
-                  <div className="stat  p-10">
-                    <div className="stat-title text-lg font-semibold text-black">
-                      Protein%
-                    </div>
-                    <div className=" text-5xl font-bold mx-">{res.Protein}</div>
-                    <div className="stat-desc text-base font-medium text-right pt-4 ml-8 text-black">
-                      {parseFloat(res.Protein) >= 3
-                        ? "Terpenuhi"
-                        : "Tidak Terpenuhi"}
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div className="mt-10 text-center">
-                <span className="text-2xl font-bold px-4 py-2 text-green-900">
-                  Hasil Prediksi
-                </span>
-                <button
-                  className={`btn btn-wide text-xl font-semibold px-4 py-2 rounded-lg ${
-                    res.hasil_prediksi === "Bagus"
-                      ? "bg-green-900 text-white"
-                      : "bg-red-600 text-white"
-                  }`}
-                >
-                  {res.hasil_prediksi}
-                </button>
+                <div className="mt-10 text-center">
+                  <span className="text-2xl font-bold px-4 py-2 text-green-900">
+                    Hasil Prediksi
+                  </span>
+                  <button
+                    className={`btn btn-wide text-xl font-semibold px-4 py-2 rounded-lg ${
+                      res.hasil_prediksi === "Bagus"
+                        ? "bg-green-900 text-white"
+                        : "bg-red-600 text-white"
+                    }`}
+                  >
+                    {res.hasil_prediksi}
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       ) : (
         <div className="flex justify-center items-center p-8">
