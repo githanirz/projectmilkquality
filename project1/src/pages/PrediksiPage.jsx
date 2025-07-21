@@ -13,13 +13,11 @@ const PrediksiPage = () => {
   const [mitra, setMitra] = useState(null);
 
   useEffect(() => {
-    // Redirect jika tidak ada hasil prediksi
     if (!hasil_prediksi && !batch_results) {
       navigate("/prediksi");
       return;
     }
 
-    // Jika input manual dan ada mitra_id, ambil nama mitranya
     if (input?.mitra_id) {
       axios
         .get(
@@ -43,7 +41,7 @@ const PrediksiPage = () => {
       </div>
       {batch_results && batch_results.length > 0 ? (
         <div className="flex justify-center items-center p-8">
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
             {batch_results.map((res, i) => (
               <div key={i} className="card bg-white shadow-md p-6">
                 <p className="flex gap-2">
@@ -56,7 +54,7 @@ const PrediksiPage = () => {
                   <img src={mitraicon} className="w-10 h-10" />
                   <span className="font-medium">{res.nama}</span>
                 </p>
-                <div className="flex gap-6">
+                <div className="flex flex-col sm:flex-row gap-6">
                   <div
                     className={`stats shadow ${
                       parseFloat(res.Fat) >= 3
@@ -154,7 +152,7 @@ const PrediksiPage = () => {
                 <img src={mitraicon} className="w-10 h-10" />
                 <span>{mitra?.nama}</span>
               </p>
-              <div className="flex gap-6">
+              <div className="flex flex-col sm:flex-row gap-6">
                 <div
                   className={`stats shadow ${
                     parseFloat(input?.Protein) >= 3
