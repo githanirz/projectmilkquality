@@ -4,7 +4,6 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
-
 from dotenv import load_dotenv
 load_dotenv()
 

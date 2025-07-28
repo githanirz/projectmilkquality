@@ -11,8 +11,6 @@ def create_app():
     app.config.from_object(Config)
     CORS(app, resources={r"/*": {"origins": "*"}})
 
-    # Hapus baris mysql.init_app(app) karena sudah tidak pakai flask_mysqldb
-
     app.register_blueprint(main)
     app.register_blueprint(mitra_bp)
     app.register_blueprint(prediksi_bp)

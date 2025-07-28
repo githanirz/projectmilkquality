@@ -25,7 +25,7 @@ def get_all_riwayat():
             "id": r[0],
             "admin_id": r[1],
             "mitra_id": r[2],
-            "nama": r[3],  # bisa jadi None/null
+            "nama": r[3], 
             "tanggal_prediksi": r[4],
             "added_water": r[5],
             "protein": r[6],
