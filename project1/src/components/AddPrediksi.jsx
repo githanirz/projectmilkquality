@@ -38,15 +38,15 @@ const AddPrediksi = () => {
     if (!formData.mitra_id) newErrors.mitra_id = "Mitra wajib dipilih.";
     if (!formData.Fat) newErrors.Fat = "Fat wajib diisi.";
     else if (isNaN(formData.Fat) || parseFloat(formData.Fat) < 0)
-      newErrors.Fat = "Fat harus angka >= 0.";
+      newErrors.Fat = "Tidak Sesuai Parameter";
 
     if (!formData.AddedWater) newErrors.AddedWater = "Added Water wajib diisi.";
     else if (isNaN(formData.AddedWater) || parseFloat(formData.AddedWater) < 0)
-      newErrors.AddedWater = "Added Water harus angka >= 0.";
+      newErrors.AddedWater = "Tidak Sesuai Parameter";
 
     if (!formData.Protein) newErrors.Protein = "Protein wajib diisi.";
     else if (isNaN(formData.Protein) || parseFloat(formData.Protein) < 0)
-      newErrors.Protein = "Protein harus angka >= 0.";
+      newErrors.Protein = "Tidak Sesuai Parameter";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -164,8 +164,8 @@ const AddPrediksi = () => {
                 Masukkan Parameter
               </h2>
               <p className="text-sm mt-2 text-gray-500 mb-4">
-                Format: Fat = 03.00 lebih, AddedWater = 00.00 , Protein = 03.00
-                lebih
+                Standarisasi: Fat = 03.00 lebih, AddedWater = 00.00 , Protein =
+                03.00 lebih
               </p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <fieldset>
